@@ -145,7 +145,18 @@ click$
 
   Higher order observable: take an observable and emit it's value like map, filter etc... so there is more than one observable in the main observable
 
+  mergeMap, switchMap there are the same swap higher order observable to single order observable the main difference is 
+    mergeMap subscribe on the inner observable when emit value in the main observable without stop the old subscriptions for inner observables 
+    switchMap subscribe on the inner observable when emit value in the main observable and stop the old subscriptions for inner observables
+
+  " maintains multiple active inner subscriptions at once it's possible to create a memory leak through long-lived inner subscriptions "
+
+  concatMap: subscribe on the inner observable when emit value in the main observable and stop emitting any value until the inner observable is completed 
+  "goes in queue until the inner observable is completed"
+
+  exhaustMap: subscribe on the inner observable when emit value in the main observable and ignore any emitted value until the inner observable is completed
+
   */
 const input$ = fromEvent(document, "keyup");
 
-observable.pipe(mergeMap((data) => this.anotherObservable(data))).subscribe();
+// observable.pipe(mergeMap((data) => this.anotherObservable(data))).subscribe();
