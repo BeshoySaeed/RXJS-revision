@@ -13,6 +13,11 @@ const {
   takeUntil,
   distinctUntilChanged,
   distinctUntilKeyChanged,
+  debounceTime,
+  throttleTime,
+  sampleTime,
+  mergeAll,
+  mergeMap,
 } = rxjs.operators;
 
 /* rxjs observable
@@ -106,7 +111,41 @@ nums$
   .subscribe(console.log);
 */
 
-/* Time operators
+/* Limiting operators
+
+debounceTime take a value by ms
+debounce take a value as a function which return the delay
+
+const clickEvent = fromEvent(document, "keyup");
+
+clickEvent
+  .pipe(pluck("keyCode"), distinctUntilChanged(), debounceTime(300))
+  .subscribe(console.log);
+
+throttleTime prevent the emit subscription for specific time
+
+sample same like debounce
+sampleTime the difference between it and throttleTime is it's start after subscription even if there is no emit values
+and if subscribe and the time path it will not emit again until the time come again and will take the recent value
+const click$ = fromEvent(document, "click");
+
+click$
+  .pipe(
+    sampleTime(4000),
+    map(({ clientX, clientY }) => ({ clientX, clientY }))
+  )
+  .subscribe(console.log);
 
 
-*/
+
+  auditTime  when emit a value wait for a specific time and take the recent emit value
+
+  transformation operators
+    flatting operators: take an observable and subscribe on it and then emit it's value like mergeAll and mergeMap etc...
+
+  Higher order observable: take an observable and emit it's value like map, filter etc... so there is more than one observable in the main observable
+
+  */
+const input$ = fromEvent(document, "keyup");
+
+observable.pipe(mergeMap((data) => this.anotherObservable(data))).subscribe();
