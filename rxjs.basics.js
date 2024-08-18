@@ -156,6 +156,8 @@ click$
 
   exhaustMap: subscribe on the inner observable when emit value in the main observable and ignore any emitted value until the inner observable is completed
 
+  catchError: if an error happen it will emit the error
+
   */
 const input$ = fromEvent(document, "keyup");
 
