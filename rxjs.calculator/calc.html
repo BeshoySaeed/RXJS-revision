@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mortgage Calculator</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Mortgage Calculator</h2>
+      <div class="inputs-group">
+        <label for="amount">
+          Mortgage Amount
+          <input type="number" name="amount" id="amount" />
+        </label>
+        <label for="amount">
+          interest Rate (%)
+          <input type="number" name="amount" id="interest" />
+        </label>
+        <label for="">Mortgage length</label>
+        <div class="form-group">
+          <input type="radio" name="15" class="length" id="15" value="180" />
+          <input type="radio" name="15" class="length" id="30" value="360" />
+        </div>
+      </div>
+
+      <p class="label-display"></p>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.8.1/rxjs.umd.min.js"
+      integrity="sha512-D9LDs8YUUVa4V9Gl4Zb+xqRAc7RCzooR3+zzebgK2RMu/KU+dh90pbjEEMzPiSyRSGbSp9j1pZnrO4joGa5WEg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"></script>
+    <script src="./calc.js"></script>
+  </body>
+</html>

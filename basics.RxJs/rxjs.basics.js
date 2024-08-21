@@ -1,4 +1,5 @@
-const { Observable, fromEvent, of, range, from, interval, time } = rxjs;
+const { Observable, fromEvent, of, range, from, interval, time, shareReplay } =
+  rxjs;
 const {
   map,
   pluck,
@@ -156,9 +157,15 @@ click$
 
   exhaustMap: subscribe on the inner observable when emit value in the main observable and ignore any emitted value until the inner observable is completed
 
-  catchError: if an error happen it will emit the error
+  startWith: start emitting with initial value, can take more than values
+  endWith: end emitting with initial value, can take more than values
 
+  concat: emit two observables follow each other
+  "goes in queue until the first observable is completed"
+
+
+  merge, combineLatest, forkJoin
   */
-const input$ = fromEvent(document, "keyup");
+// const input$ = fromEvent(document, "keyup");
 
 // observable.pipe(mergeMap((data) => this.anotherObservable(data))).subscribe();
